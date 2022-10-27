@@ -58,7 +58,7 @@ function render(tiler, extent, resolution, options = {}) {
   const result = sharp(Buffer.from(xml)).resize(
     Math.round(extentWidth / resolution),
     Math.round(extentHeight / resolution)
-  )
+  ).flatten({ background: { r: 255, g: 255, b: 255 } })
   if (options.outputPath) {
     return result.toFile(options.outputPath)
   } else if (options.format) {
