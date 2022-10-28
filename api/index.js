@@ -54,7 +54,7 @@ const getMap = async (req, res, next) => {
     let mime = ""
     let out = null;
 
-    if (!req.body.type || req.body.type === 'jpeg') {
+    if (!req.body.type || req.body.type === 'png') {
         out = imgBlob
         mime = 'image/png'
         filename = uploadedFile.name.slice(0, -4) + "_" + northWest[1] + "_" + northWest[0] + "_" + northEast[1] + "_" + northEast[0] + "_" + southEast[1] + "_" + southEast[0] + "_" + southWest[1] + "_" + southWest[0] + "_" +".png"
