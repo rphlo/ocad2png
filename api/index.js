@@ -9,6 +9,8 @@ const proj4 = require('proj4')
 const {saveKMZ} = require('./helpers')
 const { render } = require('./ocad_render')
 
+
+
 const app = express()
 
 app.use(fileUpload({
@@ -49,6 +51,7 @@ const getMap = async (req, res, next) => {
         format: "jpeg",
         exportHidden: false,
         applyGrivation: false,
+        fill: "#fff"
     })
     let filename = ""
     let mime = ""
