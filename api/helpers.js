@@ -11,7 +11,7 @@ const getKml = (name, corners_coords) => {
           <name>${decodeURIComponent(escape(name))}</name>
           <drawOrder>50</drawOrder>
           <Icon>
-            <href>files/doc.png</href>
+            <href>files/doc.jpg</href>
           </Icon>
           <altitudeMode>clampToGround</altitudeMode>
           <gx:LatLonQuad>
@@ -29,7 +29,7 @@ const getKml = (name, corners_coords) => {
     var zip = new JSZip();
     zip.file("doc.kml", getKml(name, bound));
     var img = zip.folder("files");
-    img.file("doc.png", imgBlob);
+    img.file("doc.jpg", imgBlob);
     return zip.generateAsync({type:"nodebuffer"})
       .then(function(content) {
           return content;

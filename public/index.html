@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>OCAD 2 PNG</title>
+        <title>OCAD 2 Image</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     </head>
     <body>
         <div class="container">
-        <h1>OCAD 2 PNG</h1>
+        <h1>OCAD 2 Image</h1>
         <form method="POST" action="/api/get-map" enctype="multipart/form-data">
             <label for="url" class="form-label">Ocad file:</label>
             <input class="form-control" type="file" name="ocad_file" required accept=".ocd"/>
-            <button type="submit" class="btn btn-primary" style="margin-top:15px" name="type" value="png">Download PNG</button>&nbsp;
+            <button type="submit" class="btn btn-primary" style="margin-top:15px" name="type" value="jpeg">Download JPEG</button>&nbsp;
             <button type="submit" class="btn btn-primary" style="margin-top:15px" name="type" value="kmz">Download KMZ</button>
         </form>
     </div>

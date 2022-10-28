@@ -24,7 +24,7 @@ const getMap = async (req, res, next) => {
     if(!req.files?.ocad_file) {
        return res.status(400).send('no file sent')
     }
-    if (!['png', 'kmz'].includes(req.body.type)){
+    if (!['jpeg', 'kmz'].includes(req.body.type)){
        return res.status(400).send('invalid output format')
     }
     const uploadedFile = req.files.ocad_file;
@@ -46,7 +46,7 @@ const getMap = async (req, res, next) => {
     const tiler = new OcadTiler(ocadFile)
     tileBounds = tiler.bounds
     const imgBlob = await render(tiler, tileBounds, 1, {
-        format: "png",
+        format: "jpeg",
         exportHidden: false,
         applyGrivation: false,
     })
@@ -54,10 +54,10 @@ const getMap = async (req, res, next) => {
     let mime = ""
     let out = null;
 
-    if (!req.body.type || req.body.type === 'png') {
+    if (!req.body.type || req.body.type === 'jpeg') {
         out = imgBlob
-        mime = 'image/png'
-        filename = uploadedFile.name.slice(0, -4) + "_" + northWest[1] + "_" + northWest[0] + "_" + northEast[1] + "_" + northEast[0] + "_" + southEast[1] + "_" + southEast[0] + "_" + southWest[1] + "_" + southWest[0] + "_" +".png"
+        mime = 'image/jpeg'
+        filename = uploadedFile.name.slice(0, -4) + "_" + northWest[1] + "_" + northWest[0] + "_" + northEast[1] + "_" + northEast[0] + "_" + southEast[1] + "_" + southEast[0] + "_" + southWest[1] + "_" + southWest[0] + "_" +".jpg"
     } else if(req.body.type === 'kmz') {
         const mapName = uploadedFile.name.slice(0, -4)
         out = await saveKMZ(
