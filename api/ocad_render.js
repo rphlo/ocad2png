@@ -16,6 +16,7 @@ const renderSvg = (tiler, extent, resolution, options = {}) => {
       objects: tiler.getObjects(extent, (options.buffer || 256) * resolution),
       document,
     })
+    fixIds(svg)
     return svg
 }
 
@@ -48,6 +49,17 @@ function render(tiler, extent, resolution, options = {}) {
     return result.toFormat(options.format).toBuffer()
   } else {
     throw new Error('Missing option "outputPath" or "format".')
+  }
+}
+
+function fixIds(n) {
+  if (n.id) {
+    n.setAttributeNS('http://www.w3.org/2000/svg', 'id', n.id)
+  }
+  if (n.childNodes) {
+    for (let i = 0; i < n.childNodes.length; i++) {
+      fixIds(n.childNodes[i])
+    }
   }
 }
 
