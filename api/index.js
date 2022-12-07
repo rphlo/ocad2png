@@ -10,7 +10,6 @@ const {saveKMZ} = require('./helpers')
 const { render } = require('./ocad_render')
 
 
-
 const app = express()
 
 app.use(fileUpload({
@@ -34,7 +33,6 @@ const getMap = async (req, res, next) => {
     const ocadFile = await readOcad(uploadedFile.data);
     const mapCrs = ocadFile.getCrs();
     const proj4Def = await getProj4Def(mapCrs.code);
-    const bounds = ocadFile.getBounds()
     const projectedBounds = ocadFile.getBounds(mapCrs.toProjectedCoord.bind(mapCrs))
     
     proj4.defs('WGS84', "+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84 +units=degrees");
